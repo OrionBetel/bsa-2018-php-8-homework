@@ -15,33 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/currencies', function () {
-    return view(
-        'currencies',
-        [
-            'currencies' => [
-                [
-                    'name' => 'Bitcoin',
-                    'rate' => '6631',
-                ],
-                [
-                    'name' => 'Dogecoin',
-                    'rate' => '0,002695',
-                ],
-                [
-                    'name' => 'Litecoin',
-                    'rate' => '85',
-                ],
-            ]
-        ]);
-});
+Route::get('/currencies', 'CurrenciesController@showAll')
+    ->name('currencies');
 
-Route::get('/currencies/1', function () {
-    return view(null,
-        [
-            'name' => 'Bitcoin',
-            'rate' => '6631',
-        ]
-    );
-});
+Route::get('/currencies/{id}', 'CurrenciesController@showParticular')
+    ->name('particular-currency');
 
+Route::get('/currencies/add', 'CurrenciesController@add')
+    ->name('add-currency');
+
+Route::get('/currencies/{id}/edit', 'CurrenciesController@edit')
+    ->name('edit-currency');
+
+Route::get('/currencies/{id}/delete', 'CurrenciesController@delete')
+    ->name('delete-currency');
