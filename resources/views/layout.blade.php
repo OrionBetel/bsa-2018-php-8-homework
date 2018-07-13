@@ -30,11 +30,13 @@
                     <a href="{{ route('currencies') }}" class="nav-link">Currencies</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('add-currency') }}" class="nav-link">Add</a>
+                    <a href="{{ route('show-add-form') }}" class="nav-link">Add</a>
                 </li>
             </ul>
         </nav>
     @show
+
+    @yield('heading')
 
     <div class="container">
         @yield('content')

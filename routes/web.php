@@ -15,17 +15,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/currencies', 'CurrenciesController@showAll')
-    ->name('currencies');
+Route::prefix('currencies')->group(function () {
+    Route::get('/', 'CurrenciesController@showAll')
+        ->name('currencies');
 
-Route::get('/currencies/{id}', 'CurrenciesController@showParticular')
-    ->name('particular-currency');
+    Route::get('{id}', 'CurrenciesController@showParticular')
+        ->where('id', '[0-9]+')
+        ->name('particular-currency');
 
-Route::get('/currencies/add', 'CurrenciesController@add')
-    ->name('add-currency');
+    Route::get('add', 'CurrenciesController@showAddForm')
+        ->name('show-add-form');
 
-Route::get('/currencies/{id}/edit', 'CurrenciesController@edit')
-    ->name('edit-currency');
+    Route::post('add', 'CurrenciesController@add')
+        ->name('add-currency');
 
-Route::get('/currencies/{id}/delete', 'CurrenciesController@delete')
-    ->name('delete-currency');
+    Route::get('{id}/edit', 'CurrenciesController@edit')
+        ->name('edit-currency');
+
+    Route::get('{id}/delete', 'CurrenciesController@delete')
+        ->name('delete-currency');
+});

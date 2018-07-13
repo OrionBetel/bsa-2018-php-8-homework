@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('currencies')
 
-@section('title', 'Currency')
+@section('title', $currencies[0]['title'])
 
-@section('content')
-    <p>Hello, world!</p>
+@section('heading')
+    <h1 class="display-4 text-center">{{ $currencies[0]['title'] }}</h1>
 @endsection
