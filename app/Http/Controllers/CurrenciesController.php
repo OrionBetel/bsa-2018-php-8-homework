@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Currency;
-use App\Http\Requests\AddCurrencyRequest;
+use App\Http\Requests\CurrencyRequest;
 
 class CurrenciesController extends Controller
 {
@@ -26,7 +26,7 @@ class CurrenciesController extends Controller
         return view('addCurrency');
     }
 
-    public function add(AddCurrencyRequest $request)
+    public function add(CurrencyRequest $request)
     {
         $validData = $request->validated();
         
@@ -42,9 +42,26 @@ class CurrenciesController extends Controller
         return redirect()->route('currencies');
     }
     
-    public function edit($id)
+    public function showEditForm($id)
     {
-        return view('layout');
+        $currency = Currency::find($id)->toArray();
+        
+        return view('editCurrency', ['currency' => $currency]);
+    }
+    
+    public function edit(CurrencyRequest $request, $id)
+    {
+        $currency = Currency::find($id);
+        
+        $newData = $request->validated();
+
+        foreach ($newData as $key => $value) {
+            $currency->{$key} = $value;
+        }
+
+        $currency->save();
+
+        return redirect()->route('particular-currency', ['id' => $id]); 
     }
 
     public function delete($id)

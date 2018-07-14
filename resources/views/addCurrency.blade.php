@@ -2,6 +2,10 @@
 
 @section('title', 'Add currency')
 
+@section('heading')
+    <h1 class="display-4 text-center">Add currency</h1>
+@endsection
+
 @section('content')
 <div class="card">
     <div class="card-body">
@@ -9,7 +13,7 @@
             @csrf
 
             <div class="form-group">
-                <label for="title" class="col-md-4 control-label">Currency name *</label>
+                <label for="title" class="col-md-4 control-label">Currency name</label>
 
                 <div class="col-md-6">
                     @if ($errors->has('title'))
@@ -17,27 +21,27 @@
                     @endif
                     
                     <input class="form-control {{ $errors->has('title') ? ' has-error' : '' }}" 
-                        id="title" type="text"  name="title" value="{{ old('title') }}" 
-                        placeholder="Dollar killer" autofocus>
+                        value="{{ old('title') }}" id="title" type="text" 
+                        name="title" autofocus>
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="short_name" class="col-md-4 control-label">Currency short name *</label>
+                <label for="short_name" class="col-md-4 control-label">Currency short name</label>
 
                 <div class="col-md-6">
                     @if ($errors->has('short_name'))
                         <span class="text-danger">{{ $errors->first('short_name') }}</span>
                     @endif
                     
-                    <input class="form-control {{ $errors->has('logo_url') ? ' is-invalid' : '' }}"
-                        id="short_name" type="text" value="{{ old('short_name') }}"
-                        name="short_name" placeholder="DKL" autofocus>
+                    <input class="form-control {{ $errors->has('short_name') ? ' is-invalid' : '' }}"
+                        value="{{ old('short_name') }}" id="short_name"
+                        type="text" name="short_name">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="logo_url" class="col-md-4 control-label">Currency image (URL) *</label>
+                <label for="logo_url" class="col-md-4 control-label">Currency image (URL)</label>
 
                 <div class="col-md-6">
                     @if ($errors->has('logo_url'))
@@ -45,13 +49,13 @@
                     @endif
                     
                     <input class="form-control {{ $errors->has('logo_url') ? ' is-invalid' : '' }}" 
-                        id="logo_url" type="text" name="logo_url" value="{{ old('logo_url') }}" 
-                        placeholder="https://example.com/image.png" autofocus>
+                        value="{{ old('logo_url') }}" id="logo_url"
+                        type="text" name="logo_url">
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="price" class="col-md-4 control-label">Currency price, USD *</label>
+                <label for="price" class="col-md-4 control-label">Currency price, USD</label>
 
                 <div class="col-md-6">
                     @if ($errors->has('price'))
@@ -59,8 +63,8 @@
                     @endif
                     
                     <input class="form-control {{ $errors->has('price') ? ' is-invalid' : '' }}"
-                        id="price" type="text" name="price" value="{{ old('price') }}"
-                        placeholder="43.21" autofocus>
+                        value="{{ old('price') }}" id="price" type="text" 
+                        name="price">
                 </div>
             </div>
 

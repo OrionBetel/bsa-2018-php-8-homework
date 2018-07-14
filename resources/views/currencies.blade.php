@@ -39,7 +39,7 @@
                         </td>
                         <td>
                             <button type="button" class="btn btn-dark edit-button">
-                                <a href="{{ route('edit-currency', ['id' => $currency['id']]) }}">Edit</a>
+                                <a href="{{ route('show-edit-form', ['id' => $currency['id']]) }}">Edit</a>
                             </button>
                             <button type="button" class="btn btn-danger delete-button">
                                 <a href="{{ route('delete-currency', ['id' => $currency['id']]) }}">Delete</a>

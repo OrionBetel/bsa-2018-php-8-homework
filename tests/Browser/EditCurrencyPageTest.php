@@ -111,7 +111,7 @@ class EditCurrencyPageTest extends DuskTestCase
             }
         );
     }
-
+    
     public function test_edit_currency()
     {
         $this->browse(

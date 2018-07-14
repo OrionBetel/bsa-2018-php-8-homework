@@ -29,7 +29,10 @@ Route::prefix('currencies')->group(function () {
     Route::post('add', 'CurrenciesController@add')
         ->name('add-currency');
 
-    Route::get('{id}/edit', 'CurrenciesController@edit')
+    Route::get('{id}/edit', 'CurrenciesController@showEditForm')
+        ->name('show-edit-form');
+
+    Route::post('{id}/edit', 'CurrenciesController@edit')
         ->name('edit-currency');
 
     Route::get('{id}/delete', 'CurrenciesController@delete')
